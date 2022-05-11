@@ -22,4 +22,6 @@ do
 done
 
 totalSalary=$(($EMP_RATE_PER_HR*$totalEmpHr))
+daySalary=$(($EMP_RATE_PER_HR*$empHrs))
 echo "Salary of the Employee a month is: $totalSalary"
+echo "Salary per day: $daySalary"
