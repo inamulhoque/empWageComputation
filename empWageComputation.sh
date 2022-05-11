@@ -12,6 +12,6 @@ case $rand in
 esac
 
 salary=$(($empHrs*$EMP_RATE_PER_HR))
-echo "$salary"
+echo "Salary: $salary"
 
 
