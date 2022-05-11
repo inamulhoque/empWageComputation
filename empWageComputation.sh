@@ -9,13 +9,19 @@ MAX_WORKING_HR_MONTH=100
 
 totalEmpHr=0
 totalWorkingDay=0
-
+day=0
 while [[ $totalEmpHr -lt $MAX_WORKING_HR_MONTH && $totalWorkingDay -lt $MAX_WORKING_DAYS ]]
 do
 	rand=$(($RANDOM%3))
 	case $rand in
-		$isFullTime) empHrs=8;;
-		$isPartTime) empHrs=4;;
+		$isFullTime)
+			empHrs=8
+			((day++))
+			;;
+		$isPartTime)
+			empHrs=4
+			((day++))
+			;;
 		*) empHrs=0;;
 	esac
 	totalEmpHr=$(($totalEmpHr+$empHrs))
@@ -25,3 +31,4 @@ totalSalary=$(($EMP_RATE_PER_HR*$totalEmpHr))
 daySalary=$(($EMP_RATE_PER_HR*$empHrs))
 echo "Salary of the Employee a month is: $totalSalary"
 echo "Salary per day: $daySalary"
+echo "$day"
