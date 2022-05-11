@@ -23,7 +23,7 @@ then
 		echo "Part time employee salary: $salary"
 	fi
 else
-	echo "Employee is absent"
+	echo "Employee is absent and salary: 0"
 fi
 
 
