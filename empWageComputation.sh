@@ -1,25 +1,22 @@
 #!/bin/bash -x
 
-isPartTime=1
-isFullTime=2
+function calculateWorkingHour() {
+case $1 in
+0) workingHour=0;;
+1) workingHour=8;;
+2) workingHour=4;;
+esac
+echo "$workingHour"
+}
+perHourSalary=20
 totalSalary=0
-EMP_RATE_PER_HR=20
-MAX_WORKING_DAYS=20
-MAX_WORKING_HR_MONTH=100
+totalWorkingHour=0
+day=1
 
-totalEmpHr=0
-totalWorkingDay=0
-
-while [[ $totalEmpHr -lt $MAX_WORKING_HR_MONTH && $totalWorkingDay -lt $MAX_WORKING_DAYS ]]
+while [[ $day -le 20 && $totalWorkingHour -lt 100 ]]
 do
-	rand=$(($RANDOM%3))
-	case $rand in
-		$isFullTime) empHrs=8;;
-		$isPartTime) empHrs=4;;
-		*) empHrs=0;;
-	esac
-	totalEmpHr=$(($totalEmpHr+$empHrs))
+workingHour=$(calculateWorkingHour $((RANDOM%3)))
+totalWorkingHour=$(($totalWorkingHour + $workingHour))
 done
-
-totalSalary=$(($EMP_RATE_PER_HR*$totalEmpHr))
-echo "Salary of the Employee a month is: $totalSalary"
+echo "Total Working Hour: $totalWorkingHour hours"
+calculateWorkingHour
